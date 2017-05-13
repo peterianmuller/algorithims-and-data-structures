@@ -18,7 +18,16 @@ class LinkedList {
     }
 
     this.tail = newTail;
-  } 
+    this.count++;
+  }
+  removeHead(){
+    if (!this.head) {
+      return null;
+    }
+    const oldHead = this.head;
+    this.head = oldHead.next;
+    this.count--;
+  }
 }
 
 
