@@ -30,6 +30,7 @@ describe('Linked List', ()=>{
 
   });
   it('should have a removeHead method', () => {
+    
     const list = new LinkedList();
     list.addToTail(0);
     list.addToTail(100);
