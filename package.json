@@ -1,0 +1,19 @@
+{
+  "name": "data-structures-es6",
+  "version": "1.0.0",
+  "description": "A collection of common data structures created with ES6 classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterianmuller/data-structures-es6.git"
+  },
+  "author": "Peter Muller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peterianmuller/data-structures-es6/issues"
+  },
+  "homepage": "https://github.com/peterianmuller/data-structures-es6#readme"
+}
