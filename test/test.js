@@ -54,6 +54,9 @@ describe('Stack', ()=>{
     expect(myStack.storage).to.be.a('array');
     expect(myStack.storage.length).to.eql(0);
   });
+  it('should have a peek method that returns the last element in the storage', ()=>{
+    expect(myStack.peek).to.be.a('function'); 
+  })
 
 
 });
