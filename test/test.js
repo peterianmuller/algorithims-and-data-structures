@@ -1,5 +1,4 @@
-//var chai = require('chai');
-var expect = chai.expect;
+const expect = chai.expect;
 
 describe('Linked List', ()=>{
   it('should create a new instance of a linked list', ()=>{
@@ -45,3 +44,16 @@ describe('Linked List', ()=>{
 
   });
 })
+
+describe('Stack', ()=>{
+  const myStack = new Stack();
+  it('should have a Stack constructor', ()=>{
+    expect(Stack).to.be.a('function');
+  });
+  it('new stack should come with a storage property that points to an empty array', ()=>{
+    expect(myStack.storage).to.be.a('array');
+    expect(myStack.storage.length).to.eql(0);
+  });
+
+
+});
