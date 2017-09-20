@@ -1,13 +1,18 @@
 class Stack {
   constructor() {
-    this.storage = [];
-    this.length = 0;
+    this.storage = {};
+    this.size = 0;
   }
   peek(){
-    const last = this.storage.length - 1;
-    return this.storage[last];
+    const last = this.storage[size];
+    return last;
   }
   getLength(){
-    return this.length;
+    return this.size;
+  }
+  push(data){
+    this.size++;
+    let size = this.getSize();
+    this.storage[size] = data;
   }
 }

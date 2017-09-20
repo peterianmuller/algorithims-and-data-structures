@@ -50,11 +50,10 @@ describe('Stack', ()=>{
   it('should have a Stack constructor', ()=>{
     expect(Stack).to.be.a('function');
   });
-  it('new stack should come with a storage property that points to an empty array', ()=>{
-    expect(myStack.storage).to.be.a('array');
-    expect(myStack.storage.length).to.eql(0);
+  it('new stack should come with a storage property that points to an empty object', ()=>{
+    expect(myStack.storage).to.be.an('object');
   });
-  it('should have a peek method that returns the last element in the storage', ()=>{
+  it('should have a peek method that returns the most recently added element', ()=>{
     expect(myStack.peek).to.be.a('function'); 
   })
 
