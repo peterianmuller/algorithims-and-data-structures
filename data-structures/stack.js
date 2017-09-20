@@ -7,12 +7,12 @@ class Stack {
     const last = this.storage[size];
     return last;
   }
-  getLength(){
+  getSize(){
     return this.size;
   }
   push(data){
-    this.size++;
     let size = this.getSize();
     this.storage[size] = data;
+    this.size++;
   }
 }

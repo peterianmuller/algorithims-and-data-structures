@@ -53,9 +53,17 @@ describe('Stack', ()=>{
   it('new stack should come with a storage property that points to an empty object', ()=>{
     expect(myStack.storage).to.be.an('object');
   });
-  it('should have a peek method that returns the most recently added element', ()=>{
+  it('should have a peek method that returns the most recently added element', () => {
     expect(myStack.peek).to.be.a('function'); 
   })
+  it('should have a push method that adds new data to the storage property', () => {
+    myStack.push(0);
+    expect(myStack.storage.hasOwnProperty('0')).to.eql(true);
+    expect(myStack.storage[myStack.size - 1]).to.eql(0);
+    myStack.push(1);
+    expect(myStack.storage.hasOwnProperty('1')).to.eql(true);
+    expect(myStack.storage[myStack.size - 1]).to.eql(1);    
+  });
 
 
 });
