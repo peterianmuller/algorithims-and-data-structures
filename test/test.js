@@ -64,6 +64,17 @@ describe('Stack', ()=>{
     expect(myStack.storage.hasOwnProperty('1')).to.eql(true);
     expect(myStack.storage[myStack.size - 1]).to.eql(1);    
   });
+  it('should have a pop method that removes the most recently added data from storage property, updates size, and returns removed data', () => {
+    let peteStack = new Stack();
+    peteStack.push(0);
+    peteStack.push(1);
+    expect(peteStack.pop).to.be.a('function');
+    expect(peteStack.size).to.eql(2);
+    let mostRecentlyAdded = peteStack.pop();
+    expect(mostRecentlyAdded).to.eql(1);
+    expect(peteStack.size).to.eql(1);
+
+  });
 
 
 });

@@ -15,4 +15,11 @@ class Stack {
     this.storage[size] = data;
     this.size++;
   }
+  pop(){
+    let size = this.getSize();
+    let deletedData = this.storage[size - 1];
+    delete this.storage[size - 1];
+    this.size--;
+    return deletedData;
+  }
 }
