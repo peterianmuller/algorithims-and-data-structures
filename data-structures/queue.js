@@ -1,4 +1,4 @@
-class queue {
+class Queue {
 	constructor(){
 		this.size = 0;
 		this.storage = {};

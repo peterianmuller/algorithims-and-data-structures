@@ -76,5 +76,21 @@ describe('Stack', ()=>{
 
   });
 
+  describe('Queue', () => {
+    it('should have a storage and size property that initialize as {} and 0 respively' , () => {
+      let peteQueue = new Queue();
+      expect(peteQueue.size).to.eql(0);
+      expect(peteQueue.storage).to.eql({});
+    });
+    it('should have an enqueue property that adds new data to the storage property', () => {
+      let peteQueue = new Queue();
+      peteQueue.enqueue(0);
+      peteQueue.enqueue(1);
+      expect(peteQueue.storage).to.include({'1': 1});
+      peteQueue.enqueue(2);
+      expect(peteQueue.storage[peteQueue.size - 1]).to.eql(2);
+    });
+  })
+
 
 });
