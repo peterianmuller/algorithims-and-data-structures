@@ -16,19 +16,19 @@ class queue {
     // delete the first item
     delete this.storage[0];
 
-    console.log('size is', this.size);
+    // decrement size;
+    this.size--;
+
+
 		// iterate over current storage object
-		
 		for (var key in this.storage) {
 		  // reassign each item to key minus 1
 			  this.storage[key - 1] = this.storage[key];
 		}
 
 		// delete last property in this.storage
-		delete this.storage[this.size - 1];
+		delete this.storage[this.size];
 
-    // decrement size;
-    this.size--;
 
 		// return last item
 		return first;
@@ -36,4 +36,5 @@ class queue {
 	  return null;
 	}
 }
+
 
