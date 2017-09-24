@@ -1,3 +1,7 @@
+// uses of queues - in JS event loop. Events get added as event listeners trigger. 
+// First function triggered runs first
+
+
 class Queue {
 	constructor(){
 		this.size = 0;
@@ -36,5 +40,6 @@ class Queue {
 	  return null;
 	}
 }
+
 
 

@@ -89,8 +89,18 @@ describe('Stack', ()=>{
       expect(peteQueue.storage).to.include({'1': 1});
       peteQueue.enqueue(2);
       expect(peteQueue.storage[peteQueue.size - 1]).to.eql(2);
+      expect(peteQueue.size).to.eql(3);
+    });
+    it('should have a dequeue property that removes the 1st item we pass in', () => {
+      let peteQueue = new Queue();
+      peteQueue.enqueue(0);
+      peteQueue.enqueue(1);
+      peteQueue.enqueue(2);
+      peteQueue.enqueue(3);
+      expect(peteQueue.dequeue()).to.eql(0);
+      expect(peteQueue.storage).to.eql({'0':1, '1':2, '2':3})
+      expect(peteQueue.dequeue()).to.eql(1);
     });
   })
-
 
 });
