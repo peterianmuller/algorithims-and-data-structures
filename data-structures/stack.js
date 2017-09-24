@@ -1,25 +1,29 @@
+// Stacks return the most recently added data
+
 class Stack {
-  constructor() {
+  constructor(){
     this.storage = {};
     this.size = 0;
   }
-  peek(){
-    const last = this.storage[size];
-    return last;
-  }
-  getSize(){
+  size(){
     return this.size;
   }
+  peek(){
+    if (this.size) {
+      return this.storage[this.size];
+    }
+  }
   push(data){
-    let size = this.getSize();
-    this.storage[size] = data;
+    this.storage[this.size] = data;
     this.size++;
+    return data;
   }
   pop(){
-    let size = this.getSize();
-    let deletedData = this.storage[size - 1];
-    delete this.storage[size - 1];
-    this.size--;
-    return deletedData;
+    if (this.size) {
+      let mostRecentlyAdded = this.storage[this.size - 1];
+      delete this.storage[this.storage[this.size]];
+      this.size--;
+      return mostRecentlyAdded;
+    }
   }
 }
