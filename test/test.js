@@ -79,17 +79,16 @@ describe('Stack', ()=>{
   describe('Queue', () => {
     it('should have a storage and size property that initialize as {} and 0 respively' , () => {
       let peteQueue = new Queue();
-      expect(peteQueue.size).to.eql(0);
+      expect(peteQueue.size()).to.eql(0);
       expect(peteQueue.storage).to.eql({});
     });
     it('should have an enqueue property that adds new data to the storage property', () => {
       let peteQueue = new Queue();
       peteQueue.enqueue(0);
       peteQueue.enqueue(1);
-      expect(peteQueue.storage).to.include({'1': 1});
+      expect(peteQueue.storage).to.include({'1': 0});
       peteQueue.enqueue(2);
-      expect(peteQueue.storage[peteQueue.size - 1]).to.eql(2);
-      expect(peteQueue.size).to.eql(3);
+      expect(peteQueue.size()).to.eql(3);
     });
     it('should have a dequeue property that removes the 1st item we pass in', () => {
       let peteQueue = new Queue();
@@ -98,7 +97,7 @@ describe('Stack', ()=>{
       peteQueue.enqueue(2);
       peteQueue.enqueue(3);
       expect(peteQueue.dequeue()).to.eql(0);
-      expect(peteQueue.storage).to.eql({'0':1, '1':2, '2':3})
+      expect(peteQueue.storage).to.eql({'2':1, '3':2, '4':3})
       expect(peteQueue.dequeue()).to.eql(1);
     });
   })
