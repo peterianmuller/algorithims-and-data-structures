@@ -1,29 +1,32 @@
-// Stacks return the most recently added data
+// Stacks return the most recently added data. LIFO. Stacks are linera data structures that
+// only allow us to interact with the most recently added items
 
 class Stack {
   constructor(){
-    this.storage = {};
     this.size = 0;
+    this.storage = {};
   }
-  size(){
-    return this.size;
-  }
-  peek(){
-    if (this.size) {
-      return this.storage[this.size];
-    }
-  }
-  push(data){
-    this.storage[this.size] = data;
+  // push method adds new data to this.storage at the current size prop. Increments size 
+  // after adding data so that we can have items 0-indexed
+  push(x){
+    this.storage[this.size] = x;
     this.size++;
-    return data;
   }
+  //pop removes items from the storage property. Note that we need to account for empty
+  // storage properties. We also need to decrement size
   pop(){
-    if (this.size) {
-      let mostRecentlyAdded = this.storage[this.size - 1];
-      delete this.storage[this.storage[this.size]];
+    if (this.storage) {
+      let mostRecentlyAdded = this.storage[this.size-1];
+      delete this.storage[this.size-1];
       this.size--;
       return mostRecentlyAdded;
     }
+    return null;
+  }
+  peek(){
+    if(this.storage){
+      return this.storage[this.size-1];
+    }
   }
 }
+

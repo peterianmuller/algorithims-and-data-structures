@@ -86,7 +86,7 @@ describe('Stack', ()=>{
       let peteQueue = new Queue();
       peteQueue.enqueue(0);
       peteQueue.enqueue(1);
-      expect(peteQueue.storage).to.include({'1': 0});
+      expect(peteQueue.storage).to.include({'0': 0});
       peteQueue.enqueue(2);
       expect(peteQueue.size()).to.eql(3);
     });
@@ -97,8 +97,10 @@ describe('Stack', ()=>{
       peteQueue.enqueue(2);
       peteQueue.enqueue(3);
       expect(peteQueue.dequeue()).to.eql(0);
-      expect(peteQueue.storage).to.eql({'2':1, '3':2, '4':3})
+      expect(peteQueue.storage).to.eql({'1':1, '2':2, '3':3})
       expect(peteQueue.dequeue()).to.eql(1);
+      expect(peteQueue.storage).to.not.include({'1':1});
+      expect(peteQueue.storage).to.eql({'2':2, '3':3});
     });
   })
 
