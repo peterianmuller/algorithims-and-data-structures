@@ -75,6 +75,8 @@ describe('Stack', ()=>{
     expect(peteStack.size).to.eql(1);
 
   });
+});
+
 
   describe('Queue', () => {
     it('should have a storage and size property that initialize as {} and 0 respively' , () => {
@@ -102,6 +104,4 @@ describe('Stack', ()=>{
       expect(peteQueue.storage).to.not.include({'1':1});
       expect(peteQueue.storage).to.eql({'2':2, '3':3});
     });
-  })
-
-});
+  });
