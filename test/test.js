@@ -104,4 +104,13 @@ describe('Stack', ()=>{
       expect(peteQueue.storage).to.not.include({'1':1});
       expect(peteQueue.storage).to.eql({'2':2, '3':3});
     });
+    it('size and storage property should both update when invoking enqueue and dequeue' , () => {
+      let peteQueue = new Queue();
+      peteQueue.enqueue(0);
+      expect(peteQueue.size()).to.eql(1);
+      expect(peteQueue.storage).to.eql({'0':0});
+      peteQueue.dequeue();
+      expect(peteQueue.size()).to.eql(0);
+      expect(peteQueue.storage).to.eql({});
+    });
   });
