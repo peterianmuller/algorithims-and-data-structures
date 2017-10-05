@@ -7,6 +7,15 @@ describe('Linked List', ()=>{
     expect(node.val).to.eql(10); 
     expect(node.next).to.eql(null);   
   });  
+  it('should come with a SinglyList constructor that has a size and head property', () => {
+    expect(singleList.length).to.eql(0);
+    expect(singleList.head).to.eql(null);
+    let peteList = new SinglyList();
+    peteList.add(node);
+    expect(peteList.length).to.eql(1);
+    expect(peteList.head.next).to.eql(null);    
+    expect(peteList.head.val.val).to.eql(10);    
+  });
 })
 
 describe('Stack', ()=>{

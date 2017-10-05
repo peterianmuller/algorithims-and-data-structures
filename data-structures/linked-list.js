@@ -6,6 +6,9 @@ class Node {
   constructor(data){
     this.val = data;
     this.next = null;
+  }
+  getVal(){
+    return this.val;
   }  
 }
 
@@ -16,9 +19,13 @@ class SinglyList {
   }
   // add(val) - adds a node to the list
   add(x){
+    let node = new Node(x);
     // check if list is empty
     if (!this.head) {
-      this.head = new Node(x);      
+
+      this.head = node; 
+
+      this.length++;    
     }
   }
 
