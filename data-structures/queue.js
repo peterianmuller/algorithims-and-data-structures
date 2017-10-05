@@ -4,24 +4,25 @@
 
 class Queue {
 	constructor(){
-		this.storage = {};
 		this.oldestIndex = 0;
 		this.newestIndex = 0;
+		this.storage = {};
 	}
 	size(){
 		return this.newestIndex - this.oldestIndex;
 	}
 	enqueue(x){
-	  this.storage[this.newestIndex] = x;
-	  this.newestIndex++;	
+		this.storage[this.newestIndex] = x;
+		this.newestIndex++;
 	}
 	dequeue(){
-		if (this.size()){
-			let oldestAdded = this.storage[this.oldestIndex];
-			delete this.storage[this.oldestIndex];
-			this.oldestIndex++;
-			return oldestAdded; 
+		if (!this.size()) {
+		  return null;   	
 		}
-		return null;
+		let oldestAdded = this.storage[this.oldestIndex];
+		delete this.storage[this.oldestIndex];
+		this.oldestIndex++;
+		return oldestAdded;
 	}
+
 }
