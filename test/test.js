@@ -18,11 +18,31 @@ describe('Linked List', ()=>{
     let anotherNode = new Node(15);
     peteList.add(anotherNode);
     expect(peteList.length).to.eql(2);
-    expect(peteList.head.val.val).to.eql(15);  
     let thirdNode = new Node(-100);
     peteList.add(thirdNode);
     expect(peteList.length).to.eql(3);
-    expect(peteList.head.val.val).to.eql(-100);  
+    expect(peteList.head.next.val.val).to.eql(15);
+  });
+  it('should come with a searchNodeAt method that returns a node at passed-in position', () => {
+    let peteList = new SinglyList();
+    expect(peteList.searchNodeAt(0)).to.eql(null);
+    peteList.add(node);
+    peteList.add(new Node(15));
+    expect(peteList.searchNodeAt(1).val.val).to.eql(15);
+    peteList.add(new Node(-199));
+    expect(peteList.searchNodeAt(2).val.val).to.eql(-199);
+    expect(peteList.searchNodeAt(2).val.next).to.eql(null);
+  })
+  it('should come with a removeNode method that removes a node at a given position', () => {
+    let peteList = new SinglyList();
+    expect(peteList.remove(0)).to.eql(null);
+    peteList.add(new Node(10));
+    peteList.add(new Node(100));
+    expect(peteList.remove(1).val.val).to.eql(100);
+    peteList.add(new Node(600));
+    expect(peteList.length).to.eql(2);
+    expect(peteList.remove(0).val.val).to.eql(10);
+    expect(peteList.length).to.eql(1);
   });
 });
 

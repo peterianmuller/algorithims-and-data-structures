@@ -39,24 +39,26 @@ class SinglyList {
   }
   // add(val) - adds a node to the list
   add(x){
-    let node = new Node(x);
+    let nodeToAdd = new Node(x);
     // check if list is empty
     if (!this.head) {
 
-      this.head = node; 
+      this.head = nodeToAdd; 
 
       this.length++;    
     } else {
     // already a node
 
     // save reference to old head  
-    let oldHead = this.head;  
-    
-    // add node to oldHead.next
-    oldHead.next = node;
+    let currentNode = this.head;  
 
-    //re-assign this.head to current node
-    this.head = node;
+    // head points to first node in list
+    while (currentNode.next) {
+      currentNode = currentNode.next;  
+    }
+    
+    // make next property of most recently added node point to node to add
+    currentNode.next = nodeToAdd;
 
     //increment length
     this.length++;
@@ -64,6 +66,66 @@ class SinglyList {
   }
 
   // searchNodeAt(position) - searches for a node at n-poisition in the list
+  searchNodeAt(n){
+    // find node at n position
+    // check if this.length is less than n
+    if (this.length < n || this.length === 0) {
+      // if true return null
+      return null;
+    }
+      // if false
+        // create counter pointing to zero
+    let counter = 0, currentNode = this.head;  
+        // start iterating at this.head
+    while (currentNode) {
+      // when coutner === n
+      if (counter === n) {
+        // return this.val
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+      // increment by one and add one to counter
+      counter++;
+    }    
 
-  // remove(position) - remove 
+  }
+
+  // remove(position) - remove node at a certain position
+  remove(position) {
+    
+    // check if position is > length
+    if (position > this.length || !this.length) {
+      // if true return null;
+      return null;
+    }
+
+    // if removing head
+      // set this.head to this.head.next
+    if (position === 0) {
+      let oldHead = this.head;
+      this.head = this.head.next;
+      this.length--;
+      return oldHead;
+    }  
+
+    // if false
+    // initialize counter variable set to 0 and reference to currentNode    
+    let counter = 0, currentNode = this.head;  
+  
+  // iterate over nodes in list
+   while(currentNode) {
+    
+    // when counter === position - 1
+    if (counter === position - 1) {
+      let nodeToRemove = currentNode.next;
+      
+      // make current node's next property point to the current node's next next property.
+      currentNode.next = currentNode.next.next;
+
+      this.length--;
+      return nodeToRemove;
+    }
+   }     
+
+  }
 }
