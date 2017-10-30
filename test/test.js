@@ -14,7 +14,7 @@ describe('Linked List', ()=>{
     peteList.add(node);
     expect(peteList.length).to.eql(1);
     expect(peteList.head.next).to.eql(null);    
-    expect(peteList.head.val.val).to.eql(10);    
+    expect(peteList.head.val).to.eql(10);    
   });
 })
 
