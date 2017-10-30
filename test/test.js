@@ -14,9 +14,17 @@ describe('Linked List', ()=>{
     peteList.add(node);
     expect(peteList.length).to.eql(1);
     expect(peteList.head.next).to.eql(null);    
-    expect(peteList.head.val).to.eql(10);    
+    expect(peteList.head.val.val).to.eql(10);
+    let anotherNode = new Node(15);
+    peteList.add(anotherNode);
+    expect(peteList.length).to.eql(2);
+    expect(peteList.head.val.val).to.eql(15);  
+    let thirdNode = new Node(-100);
+    peteList.add(thirdNode);
+    expect(peteList.length).to.eql(3);
+    expect(peteList.head.val.val).to.eql(-100);  
   });
-})
+});
 
 describe('Stack', ()=>{
   const myStack = new Stack();
