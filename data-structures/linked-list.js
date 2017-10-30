@@ -3,23 +3,13 @@
 // each node contains info about a step or a place in the scavenger hunt - "You've reached B Town!" and the pointer has a memory location to go to the next place. Because each node needs the ability to store data and point to the next place we use the data property to store our data and the next property to say "hey, go here next"
 
 
-// function Node(val){
-//   this.val = val;
-//   this.next = null;
-// }
+// Time Complexity:
 
-// function SinglyList(){
-//   this.head = null;
-//   this.length = 0;  
-// }
-
-// SinglyList.prototype.add = function(val){
-//   let node = new Node(val);
-//   if (!this.head) {
-//     this.head = node;
-//     this.length++;
-//   }
-// }
+// Average:
+  // Search O(n) - might have to search entire list for the last item
+  // Access O(n) - might have to search entire list for last item
+  // Insertion of this implamentation is O(n) because we start at head and iterate to find most recently inserted node
+  // 
 
 
 class Node {
@@ -36,6 +26,7 @@ class SinglyList {
   constructor(){
     this.length = 0;
     this.head = null;
+    this.tail = null;
   }
   // add(val) - adds a node to the list
   add(x){
@@ -44,6 +35,7 @@ class SinglyList {
     if (!this.head) {
 
       this.head = nodeToAdd; 
+      this.tail = nodeToAdd;
 
       this.length++;    
     } else {
@@ -51,7 +43,7 @@ class SinglyList {
 
     // save reference to old head  
     let currentNode = this.head;  
-
+    
     // head points to first node in list
     while (currentNode.next) {
       currentNode = currentNode.next;  
