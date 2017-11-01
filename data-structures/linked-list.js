@@ -8,7 +8,7 @@
 // Average:
   // Search O(n) - might have to search entire list for the last item
   // Access O(n) - might have to search entire list for last item
-  // Insertion of this implamentation is O(n) because we start at head and iterate to find most recently inserted node
+  // Insertion is O(1) because we just add to the front of the list
   // 
 
 
@@ -28,6 +28,7 @@ class SinglyList {
     this.head = null;
     this.tail = null;
   }
+
   // add(val) - adds a node to the list
   add(x){
     let nodeToAdd = new Node(x);
@@ -36,21 +37,20 @@ class SinglyList {
 
       this.head = nodeToAdd; 
       this.tail = nodeToAdd;
-
       this.length++;    
-    } else {
-    // already a node
 
-    // save reference to old head  
-    let currentNode = this.head;  
-    
-    // head points to first node in list
-    while (currentNode.next) {
-      currentNode = currentNode.next;  
-    }
-    
-    // make next property of most recently added node point to node to add
+    } else {
+    // already a node.
+
+    // save reference to old tail  
+    let currentNode = this.tail; 
+
+    // make next property of current tail point to new node
     currentNode.next = nodeToAdd;
+
+    //make tail property point to new node
+    this.tail = nodeToAdd; 
+        
 
     //increment length
     this.length++;

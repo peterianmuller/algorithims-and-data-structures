@@ -44,6 +44,13 @@ describe('Linked List', ()=>{
     expect(peteList.remove(0).val.val).to.eql(10);
     expect(peteList.length).to.eql(1);
   });
+  it('should come with an add proprty that adds a node and updates the tail property', ()=> {
+    let peteList = new SinglyList();
+    peteList.add(new Node(0));
+    peteList.add(new Node(10));
+    expect(peteList.tail.val.val).to.eql(10); 
+    expect(peteList.head.val.val).to.eql(0); 
+  });
 });
 
 describe('Stack', ()=>{
