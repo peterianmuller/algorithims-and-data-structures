@@ -87,7 +87,6 @@ class SinglyList {
     
     // check if position is > length
     if (position > this.length || !this.length) {
-      // if true return null;
       return null;
     }
 
@@ -121,14 +120,17 @@ class SinglyList {
         // to offset 0-indexed positioning and 1 more to counter to locate the node that we wish to
         // remove's position
         
+        // if removing last node
         if (counter + 2 === this.length) {
-          console.log('alo');
+          console.log('alalo');
           this.tail = currentNode;    
         }
 
         this.length--;
         return nodeToRemove;
       }
+      currentNode = currentNode.next;
+      counter++;
     }     
   }
 }
