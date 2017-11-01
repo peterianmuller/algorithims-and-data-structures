@@ -91,11 +91,12 @@ class SinglyList {
       return null;
     }
 
-    // if removing head
-      // set this.head to this.head.next
-    if (position === 0) {
+      // if we want to remove first node and there is only one node in the list
+    if (position === 0 && this.length === 1 ) {
+      // if only one node in list
       let oldHead = this.head;
       this.head = this.head.next;
+      this.tail = null;
       this.length--;
       return oldHead;
     }  
@@ -104,20 +105,30 @@ class SinglyList {
     // initialize counter variable set to 0 and reference to currentNode    
     let counter = 0, currentNode = this.head;  
   
-  // iterate over nodes in list
-   while(currentNode) {
-    
-    // when counter === position - 1
-    if (counter === position - 1) {
-      let nodeToRemove = currentNode.next;
+    // iterate over nodes in list
+    while(currentNode) {
       
-      // make current node's next property point to the current node's next next property.
-      currentNode.next = currentNode.next.next;
+      // when counter === position - 1
+      if (counter === position - 1) {
+        let nodeToRemove = currentNode.next;
+        
+        // make current node's next property point to the current node's next next property.
+        currentNode.next = currentNode.next.next;
 
-      this.length--;
-      return nodeToRemove;
-    }
-   }     
+        // if we are removing the last node reassign tail.
+        // Note that position is 0 indexed and we only are iterating up until
+        // the node before the node we wish to remove. Thus we need to add 1 to counter 
+        // to offset 0-indexed positioning and 1 more to counter to locate the node that we wish to
+        // remove's position
+        
+        if (counter + 2 === this.length) {
+          console.log('alo');
+          this.tail = currentNode;    
+        }
 
+        this.length--;
+        return nodeToRemove;
+      }
+    }     
   }
 }

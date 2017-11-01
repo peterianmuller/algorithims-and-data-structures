@@ -37,12 +37,15 @@ describe('Linked List', ()=>{
     let peteList = new SinglyList();
     expect(peteList.remove(0)).to.eql(null);
     peteList.add(new Node(10));
+    expect(peteList.remove(0).val.val).to.eql(10)
+    expect(peteList.tail).to.eql(null);
+    peteList.add(new Node(50));
     peteList.add(new Node(100));
+    expect(peteList.head.val.val).to.eql(50);
+    expect(peteList.tail.val.val).to.eql(100);
     expect(peteList.remove(1).val.val).to.eql(100);
-    peteList.add(new Node(600));
-    expect(peteList.length).to.eql(2);
-    expect(peteList.remove(0).val.val).to.eql(10);
-    expect(peteList.length).to.eql(1);
+    expect(peteList.remove(100)).to.eql(null);
+    expect(peteList.remove(0).val.val).to.eql(50);
   });
   it('should come with an add proprty that adds a node and updates the tail property', ()=> {
     let peteList = new SinglyList();
