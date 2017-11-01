@@ -102,13 +102,13 @@ class SinglyList {
 
     // if false
     // initialize counter variable set to 0 and reference to currentNode    
-    let counter = 0, currentNode = this.head;  
+    let counter = 1, currentNode = this.head;  
   
     // iterate over nodes in list
     while(currentNode) {
       
       // when counter === position - 1
-      if (counter === position - 1) {
+      if (counter === position) {
         let nodeToRemove = currentNode.next;
         
         // make current node's next property point to the current node's next next property.
@@ -120,8 +120,9 @@ class SinglyList {
         // to offset 0-indexed positioning and 1 more to counter to locate the node that we wish to
         // remove's position
         
-        // if removing last node
-        if (counter + 2 === this.length) {
+        // if removing last node than reassign tail to the currentNode, which is the node 
+        // before the node to remove.
+        if (counter + 1 === this.length) {
           console.log('alalo');
           this.tail = currentNode;    
         }
