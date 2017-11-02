@@ -7,7 +7,7 @@ describe('Linked List', ()=>{
     expect(node.val).to.eql(10); 
     expect(node.next).to.eql(null);   
   });  
-  it('should come with a SinglyList constructor that has a size and head property', () => {
+  it('should come with a SinglyList constructor that has a length, head, and tail property', () => {
     expect(singleList.length).to.eql(0);
     expect(singleList.head).to.eql(null);
     let peteList = new SinglyList();
@@ -43,20 +43,21 @@ describe('Linked List', ()=>{
     peteList.add(new Node(100));
     expect(peteList.head.val.val).to.eql(50);
     expect(peteList.tail.val.val).to.eql(100);
-    expect(peteList.remove(1).val.val).to.eql(100);
-    expect(peteList.remove(100)).to.eql(null);
     expect(peteList.remove(0).val.val).to.eql(50);
+    expect(peteList.head.val.val).to.eql(100);
+    expect(peteList.tail.val.val).to.eql(100);
+    expect(peteList.length).to.eql(1);
+    peteList.add(new Node(1000));
+    peteList.add(new Node(2000));
+    expect(peteList.tail.val.val).to.eql(2000);
+    expect(peteList.length).to.eql(3);
+    expect(peteList.remove(1).val.val).to.eql(1000);
+    peteList.add(new Node(3000));
+    peteList.add(new Node(4000));
+    peteList.add(new Node(5000));
     console.log(peteList);
-    peteList.add(new Node(200));
-    peteList.add(new Node(300));
-    peteList.add(new Node(400));
-    peteList.add(new Node(500));
-    console.log(peteList);
-    expect(peteList.remove(2).val.val).to.eql(400);
-    console.log(peteList.tail);
-    expect(peteList.remove(2).val.val).to.eql(500);
-    console.log(peteList.tail);
-    console.log(peteList);
+    //expect(peteList.remove(4).val.val).to.eql(3000);
+
   });
   it('should come with an add proprty that adds a node and updates the tail property', ()=> {
     let peteList = new SinglyList();

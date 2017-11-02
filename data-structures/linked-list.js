@@ -1,26 +1,25 @@
-// LinkedLists are data structures that hold a sequence of linked nodes. Each node contains data and a pointer, which can point to another node. Like a scavenger hunt
+// linked list. A Linked list is a data structure that is made up of Nodes that
+// are objects with a data property and a next property. Linked Lists differ from arrays because they are collections of data that are not contiguous blocks of memory. They are non-contigous so that thier nodes can be stored all over the system without needing to reserve a set block of memory.
 
-// each node contains info about a step or a place in the scavenger hunt - "You've reached B Town!" and the pointer has a memory location to go to the next place. Because each node needs the ability to store data and point to the next place we use the data property to store our data and the next property to say "hey, go here next"
+// I will be using both a head and tail proerty so that insertion is O(1).
 
+// Time and Space complexity:
 
-// Time Complexity:
+// Insertion O(1)
+// Deletion O(1) - assuming you have access to node. The actual act of deletion does not require any reshuffling of other nodes in the system
+// Search O(n)
+// Access O(n) 
 
-// Average:
-  // Search O(n) - might have to search entire list for the last item
-  // Access O(n) - might have to search entire list for last item
-  // Insertion is O(1) because we just add to the front of the list
-  // 
-
+// Node constructor
 
 class Node {
-  constructor(data){
-    this.val = data;
+  constructor(val){
+    this.val = val;
     this.next = null;
   }
-  getVal(){
-    return this.val;
-  }  
 }
+
+// singlyList constructor
 
 class SinglyList {
   constructor(){
@@ -28,110 +27,117 @@ class SinglyList {
     this.head = null;
     this.tail = null;
   }
+  add(data){
+      let nodeToAdd = new Node(data);
+    
 
-  // add(val) - adds a node to the list
-  add(x){
-    let nodeToAdd = new Node(x);
-    // check if list is empty
-    if (!this.head) {
-
-      this.head = nodeToAdd; 
+    // situation 1 - adding node to empty list
+    
+    if (!this.length) {
+      this.head = nodeToAdd;
       this.tail = nodeToAdd;
-      this.length++;    
-
-    } else {
-    // already a node.
-
-    // save reference to old tail  
-    let currentNode = this.tail; 
-
-    // make next property of current tail point to new node
-    currentNode.next = nodeToAdd;
-
-    //make tail property point to new node
-    this.tail = nodeToAdd; 
-        
-
-    //increment length
-    this.length++;
+      this.length++;
+      return nodeToAdd;
     }
+
+    // situation 2 - adding node to non-empty list
+
+    // update current tail property's next property to point to new node
+    this.tail.next = nodeToAdd;
+
+    // update tail to point to new node
+    this.tail = nodeToAdd;
+
+    //update length
+    this.length++;
+
+    return this.tail;
+
   }
 
-  // searchNodeAt(position) - searches for a node at n-poisition in the list
-  searchNodeAt(n){
-    // find node at n position
-    // check if this.length is less than n
-    if (this.length < n || this.length === 0) {
-      // if true return null
-      return null;
-    }
-      // if false
-        // create counter pointing to zero
-    let counter = 0, currentNode = this.head;  
-        // start iterating at this.head
-    while (currentNode) {
-      // when coutner === n
-      if (counter === n) {
-        // return this.val
+  searchNodeAt(position){
+    let count = 0, currentNode = this.head;
+    
+    // check if valid position or empty list
+    if (position > this.length || !this.length) {
+      return null;  
+    } 
+
+    // if valid position
+    // start at head
+    while(currentNode) {
+
+      //check if we've found node at target position
+      if (count === position) {
         return currentNode;
       }
+      
+      // if not keep iterating
       currentNode = currentNode.next;
-      // increment by one and add one to counter
-      counter++;
-    }    
+
+      //increment count
+      count++;
+
+    }
 
   }
 
-  // remove(position) - remove node at a certain position
-  remove(position) {
-    
-    // check if position is > length
+  remove(position){
+    let count = 0, currentNode = this.head, beforeNodeToDelete = null,
+        nodeToDelete = null;
+
+    // check if trying to remove node that isn't in list
     if (position > this.length || !this.length) {
       return null;
     }
 
-      // if we want to remove first node and there is only one node in the list
-    if (position === 0 && this.length === 1 ) {
-      // if only one node in list
+    // situation 1 - removing this.head 
+    if (!position) {
       let oldHead = this.head;
+
+      //only one node in list
+      if (this.length === 1) {
+      
+        this.head = null;
+        this.tail = null;
+        this.length--;
+        return oldHead;
+
+      }
+
+      // more than 1 node in list
       this.head = this.head.next;
-      this.tail = null;
       this.length--;
       return oldHead;
-    }  
 
-    // if false
-    // initialize counter variable set to 0 and reference to currentNode    
-    let counter = 1, currentNode = this.head;  
-  
-    // iterate over nodes in list
-    while(currentNode) {
+    }
+
+    //situation 2 - not removing this.head
+    while (count < position) {
+      console.log('beforeNodeToDelete is:', beforeNodeToDelete);
       
-      // when counter === position - 1
-      if (counter === position) {
-        let nodeToRemove = currentNode.next;
-        
-        // make current node's next property point to the current node's next next property.
-        currentNode.next = currentNode.next.next;
+      beforeNodeToDelete = currentNode;
+      nodeToDelete = currentNode.next;
 
-        // if we are removing the last node reassign tail.
-        // Note that position is 0 indexed and we only are iterating up until
-        // the node before the node we wish to remove. Thus we need to add 1 to counter 
-        // to offset 0-indexed positioning and 1 more to counter to locate the node that we wish to
-        // remove's position
-        
-        // if removing last node than reassign tail to the currentNode, which is the node 
-        // before the node to remove.
-        if (counter + 1 === this.length) {
-          console.log('alalo');
-          this.tail = currentNode;    
-        }
+      count++;
+    }
 
-        this.length--;
-        return nodeToRemove;
-      }
-      currentNode = currentNode.next;
-      counter++;
-    }     
+    let nodeToRemove = currentNode.next;
+
+    currentNode.next = currentNode.next.next;
+    
+    // if we are removing tail re assign tail to node that comes before old tail
+    if (count + 1 === this.length) {
+      this.tail = currentNode;
+    }
+
+    return nodeToRemove;
+
   }
+
 }
+
+
+
+
+
