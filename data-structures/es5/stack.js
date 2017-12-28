@@ -23,12 +23,21 @@ StackES5.prototype.add = function(val){
      // remove property 
      // decrese size
      // return removed property
+
 StackES5.prototype.remove = function(){
 	if (!this.size) {
 		return null;
 	}
+  
 	var newestAdded = this.storage[this.size - 1];
 	delete this.storage[this.size -1];
-	this.size--;
+	
+  this.size--;
 	return newestAdded;
-}     
+}
+
+
+
+
+
+

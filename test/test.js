@@ -142,6 +142,7 @@ describe('es6 class style', () => {
 
 describe('es5 prototypal pattern', ()=> {
   let stack = new StackES5();
+  let queue = new QueueES5();
   describe('stack', () => {
     it('constructor should return a function', () => {
       expect(StackES5).to.be.a('function');
@@ -156,7 +157,7 @@ describe('es5 prototypal pattern', ()=> {
       stack.add(1);
       expect(stack.size).to.equal(2);
     }) 
-    it('should come with an remove method that updates the storage and size properties', () => {
+    it('should come with an remove method that  removes the most recently added item and updates the storage and size properties', () => {
       let stack = new StackES5();
       expect(stack.size).to.equal(0);
       stack.add(0);
@@ -164,7 +165,35 @@ describe('es5 prototypal pattern', ()=> {
       expect(stack.size).to.equal(2);
       expect(stack.remove()).to.equal(1);
       expect(stack.size).to.equal(1);
-      console.log(stack.storage);
     }) 
   })
+  describe('queue', () => {
+    it('constructor should return a function', () => {
+      expect(QueueES5).to.be.a('function');
+    });
+    it('New instances should come with a newestIndex, oldestIndex, and storage property', () => {
+      expect(queue.oldestIndex).to.eql(null);
+      expect(queue.newestIndex).to.eql(null);
+      expect(queue.storage).to.eql({});
+    });
+    it('should come with an enqueue method that adds a new item to the queue', () => {
+      var peteQueue = new QueueES5();
+      expect(peteQueue.oldestIndex).to.eql(null);
+      peteQueue.enqueue(10);
+      expect(peteQueue.storage['0']).to.eql(10);
+      peteQueue.enqueue(20);
+      expect(peteQueue.storage['0']).to.eql(10);
+      expect(peteQueue.storage['1']).to.eql(20);
+      expect(peteQueue.storage['2']).to.eql(undefined);
+    });
+    it('should come with an dequeue method that removes the least recently added item from the queue', () => {
+      var peteQueue = new QueueES5();
+      expect(peteQueue.dequeue()).to.eql(null);
+      peteQueue.enqueue(10);
+      peteQueue.enqueue(20);
+      peteQueue.enqueue(30);
+      console.log(peteQueue);
+      expect(peteQueue.dequeue()).to.eql(10);
+    });
+  });
 }) 
