@@ -177,7 +177,7 @@ describe('es5 prototypal pattern', ()=> {
       expect(queue.storage).to.eql({});
     });
     it('should come with an enqueue method that adds a new item to the queue', () => {
-      var peteQueue = new QueueES5();
+      let peteQueue = new QueueES5();
       expect(peteQueue.oldestIndex).to.eql(null);
       peteQueue.enqueue(10);
       expect(peteQueue.storage['0']).to.eql(10);
@@ -187,13 +187,16 @@ describe('es5 prototypal pattern', ()=> {
       expect(peteQueue.storage['2']).to.eql(undefined);
     });
     it('should come with an dequeue method that removes the least recently added item from the queue', () => {
-      var peteQueue = new QueueES5();
+      let peteQueue = new QueueES5();
+      console.log(peteQueue);
       expect(peteQueue.dequeue()).to.eql(null);
       peteQueue.enqueue(10);
       peteQueue.enqueue(20);
       peteQueue.enqueue(30);
-      console.log(peteQueue);
       expect(peteQueue.dequeue()).to.eql(10);
+      expect(peteQueue.dequeue()).to.eql(20);
+      expect(peteQueue.dequeue()).to.eql(30);
+      expect(peteQueue.dequeue()).to.eql(undefined);
     });
   });
 }) 

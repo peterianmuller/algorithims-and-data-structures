@@ -21,11 +21,9 @@ QueueES5.prototype.dequeue = function(){
 	// if empty queue return null
 	if (this.oldestIndex === null && this.newestIndex === null) {
   	return null; 
-	} 
-
-	// If not empty
+	}
 	// what if we don't delete from storage but instead move our pointers
 	var oldestItem = this.storage[this.oldestIndex];
 	this.oldestIndex++;
-	return oldestItem;
+	return oldestIndex;
 }
