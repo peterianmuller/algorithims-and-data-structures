@@ -7,6 +7,8 @@ Run npm install to inport mocha and chai as dependencies
 
 # Notes on Data Structures
 
+Shout out to Naz Khan for the [excellent article on bst](https://hackernoon.com/data-structures-in-javascript-pt-1-binary-search-trees-2c231cf2c8e1)
+
 Binary Search Trees
 - Because binary seach trees consist of nested nodes, we tend to use recursion to traverse the nodes that make up the tree.
 - BST's are binary trees that have the requirement that each left child node must be less than the parent node and each right child node must be greater than the parent node
