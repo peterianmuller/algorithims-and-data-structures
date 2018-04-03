@@ -149,9 +149,16 @@ describe('es6 class style', () => {
       expect(bst.left.value).to.eql(-10);
       expect(bst.right.value).to.eql(5);
       bst.insert(-11);
-      bst.insert(-3);
-      expect(bst.left.value).to.eql(-10);
-      expect(bst.left.right.value).to.eql(-3);
+      bst.insert(-2);
+      console.log('bst', bst);
+      bst.insert(-1);
+      bst.insert(-1);
+    });
+    it('should come with a contains function that checks if a target element is present in the BST', () => {
+      expect(bst.contains(-10)).to.eql(true);
+      expect(bst.contains(-100)).to.eql(false);
+      expect(bst.contains(0)).to.eql(true);
+      expect(bst.contains(600)).to.eql(false);
     });
   });
 });
