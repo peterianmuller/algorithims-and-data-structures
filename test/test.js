@@ -137,11 +137,21 @@ describe('es6 class style', () => {
   });
 
   describe('Binary search tree', () => {
+    let bst = new BST(0);
     it('should come with a BST constructor that has a value, left, and right property', () => {
-      let bst = new BST(0);
       expect(bst.value).to.eql(0);
       expect(bst.left).to.eql(null);
       expect(bst.right).to.eql(null);
+    });
+    it('should come with an insert method that inserts nodes that are less than current node on left subtree and nodes that are greater than the current node to the right of the current node', () => {
+      bst.insert(-10);
+      bst.insert(5);
+      expect(bst.left.value).to.eql(-10);
+      expect(bst.right.value).to.eql(5);
+      bst.insert(-11);
+      bst.insert(-3);
+      expect(bst.left.value).to.eql(-10);
+      expect(bst.left.right.value).to.eql(-3);
     });
   });
 });
