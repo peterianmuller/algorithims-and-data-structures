@@ -15,6 +15,7 @@ Binary Search Trees
 
 - breath first traversal (bft) vs depth first traversal (dft)
 
+**bft**
 bft uses a queue in order to keep track of the nodes that we want to visit. We add the root node to the queue, and then any nodes to the root's left or right properties.
 
 Pseudocode for bft
@@ -29,6 +30,22 @@ while queue has a length
 	  if so add it to the back of the queue	
 
 Note that we don't need to recurse. The while loop will continue to add nodes further down the tree via the checks for node.left and node.right. Also the focal node changes for each iteration, from line 22	  
+
+**dft**
+dft aims to access the most left node first, so it makes more sense to use recursion here to traverse down many nested levels
+
+Pseudocode for dft
+
+check if this.left exists
+  if so invoke dft on this.left
+invoke callback on this
+check if this.right exists
+  if so invoke dft on this.right
+
+Here we will recurse until this.left doesn't exist, in which case we will invoke line 41. Then we will run up the callstack and invoke the callback on each ancestor of the left-most leaf. Finally we will repeat this with this.right    
+
+
+
 
 
 

@@ -8,12 +8,12 @@
 // Insertion O(1)
 // Deletion O(1) - assuming you have access to node. The actual act of deletion does not require any reshuffling of other nodes in the system
 // Search O(n)
-// Access O(n) 
+// Access O(n)
 
 // Node constructor
 
 class Node {
-  constructor(val){
+  constructor(val) {
     this.val = val;
     this.next = null;
   }
@@ -22,17 +22,16 @@ class Node {
 // singlyList constructor
 
 class SinglyList {
-  constructor(){
+  constructor() {
     this.length = 0;
     this.head = null;
     this.tail = null;
   }
-  add(data){
-      let nodeToAdd = new Node(data);
-    
+  add(data) {
+    let nodeToAdd = new Node(data);
 
     // situation 1 - adding node to empty list
-    
+
     if (!this.length) {
       this.head = nodeToAdd;
       this.tail = nodeToAdd;
@@ -52,70 +51,65 @@ class SinglyList {
     this.length++;
 
     return this.tail;
-
   }
 
-  searchNodeAt(position){
-    let count = 0, currentNode = this.head;
-    
+  searchNodeAt(position) {
+    let count = 0,
+      currentNode = this.head;
+
     // check if valid position or empty list
     if (position > this.length || !this.length) {
-      return null;  
-    } 
+      return null;
+    }
 
     // if valid position
     // start at head
-    while(currentNode) {
-
+    while (currentNode) {
       //check if we've found node at target position
       if (count === position) {
         return currentNode;
       }
-      
+
       // if not keep iterating
       currentNode = currentNode.next;
 
       //increment count
       count++;
-
     }
-
   }
 
-  remove(position){
-    let count = 0, currentNode = this.head, beforeNodeToDelete = null,
-        nodeToDelete = null;
+  remove(position) {
+    let count = 0,
+      currentNode = this.head,
+      beforeNodeToDelete = null,
+      nodeToDelete = null;
 
     // check if trying to remove node that isn't in list
     if (position > this.length || !this.length) {
       return null;
     }
 
-    // situation 1 - removing this.head 
+    // situation 1 - removing this.head
     if (!position) {
       let oldHead = this.head;
 
       //only one node in list
       if (this.length === 1) {
-      
         this.head = null;
         this.tail = null;
         this.length--;
         return oldHead;
-
       }
 
       // more than 1 node in list
       this.head = this.head.next;
       this.length--;
       return oldHead;
-
     }
 
-    //situation 2 - not removing this.head
     while (count < position) {
       console.log('beforeNodeToDelete is:', beforeNodeToDelete);
-      
+
       beforeNodeToDelete = currentNode;
       nodeToDelete = currentNode.next;
 
@@ -125,19 +119,12 @@ class SinglyList {
     let nodeToRemove = currentNode.next;
 
     currentNode.next = currentNode.next.next;
-    
+
     // if we are removing tail re assign tail to node that comes before old tail
     if (count + 1 === this.length) {
       this.tail = currentNode;
     }
 
     return nodeToRemove;
-
   }
-
 }
-
-
-
-
-
