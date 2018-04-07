@@ -150,15 +150,39 @@ describe('es6 class style', () => {
       expect(bst.right.value).to.eql(5);
       bst.insert(-11);
       bst.insert(-2);
-      console.log('bst', bst);
       bst.insert(-1);
       bst.insert(-1);
     });
     it('should come with a contains function that checks if a target element is present in the BST', () => {
+      console.log('bst is:', bst);
       expect(bst.contains(-10)).to.eql(true);
       expect(bst.contains(-100)).to.eql(false);
       expect(bst.contains(0)).to.eql(true);
       expect(bst.contains(600)).to.eql(false);
+    });
+    it('should come with a breath first search function that accpets callback and order paramenetrs', () => {
+      let easyBst = new BST(5);
+      easyBst.insert(4);
+      easyBst.insert(4.5);
+      easyBst.insert(3);
+      easyBst.insert(2);
+      easyBst.insert(6);
+      easyBst.insert(7);
+
+      console.log(easyBst);
+
+      let log = function(val) {
+        console.log(val);
+      };
+
+      // 'pre-order' means we invoke the cb on the current node, than the first left child until the leaf, than the right children
+      // console.log(easyBst.dfs(log, 'pre-order'));
+
+      //'in-order' means we invoke the callback on the left leaf, than the root, then the right subtree
+      // console.log(easyBst.dfs(log, 'in-order'));
+
+      // 'post-order' means we invoke left leaf than go up left sub tree, then right left than traverse up right usb tree than hit root
+      console.log(easyBst.dfs(log, 'post-order'));
     });
   });
 });
