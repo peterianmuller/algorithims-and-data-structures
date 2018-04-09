@@ -90,6 +90,36 @@ class BST {
 
 	}
 
+	// bfs
+
+	// I -> cb
+	// O -> invocation of cb on each node
+	// C -> Must invoke cb on every sibling before invoking cb on children
+	// E
+
+	// check if tree is empty
+	  // if true throw new error
+	// declare local variable queue
+	// add first node to queue
+  // while queue still has a length
+    // remove first node from array and save refernce currentNode to node
+    // add node's left child to queue
+    // add node's right chil to queue
+    // invoke cb on currentNode
+
+
+	bfs(cb){
+		if (!this) {
+			throw new Error('Tree must have at least one node');
+		}
+		let queue = [this];
+		while (queue.length){
+			let currentNode = queue.shift();
+			if (currentNode.left) queue.push(currentNode.left);
+			if (currentNode.right) queue.push(currentNode.right);
+			cb(currentNode);
+		}
+	}
 
 
 

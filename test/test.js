@@ -56,7 +56,6 @@ describe('es6 class style', () => {
       peteList.add(new Node(3000));
       peteList.add(new Node(4000));
       peteList.add(new Node(5000));
-      console.log(peteList);
       //expect(peteList.remove(4).val.val).to.eql(3000);
     });
     it('should come with an add proprty that adds a node and updates the tail property', () => {
@@ -138,6 +137,16 @@ describe('es6 class style', () => {
 
   describe('Binary search tree', () => {
     let bst = new BST(0);
+    let easyBst = new BST(5);
+    let log = function(val) {
+      console.log(val);
+    };
+    easyBst.insert(4);
+    easyBst.insert(4.5);
+    easyBst.insert(3);
+    easyBst.insert(2);
+    easyBst.insert(6);
+    easyBst.insert(7);
     it('should come with a BST constructor that has a value, left, and right property', () => {
       expect(bst.value).to.eql(0);
       expect(bst.left).to.eql(null);
@@ -154,35 +163,37 @@ describe('es6 class style', () => {
       bst.insert(-1);
     });
     it('should come with a contains function that checks if a target element is present in the BST', () => {
-      console.log('bst is:', bst);
       expect(bst.contains(-10)).to.eql(true);
       expect(bst.contains(-100)).to.eql(false);
       expect(bst.contains(0)).to.eql(true);
       expect(bst.contains(600)).to.eql(false);
     });
-    it('should come with a breath first search function that accpets callback and order paramenetrs', () => {
-      let easyBst = new BST(5);
-      easyBst.insert(4);
-      easyBst.insert(4.5);
-      easyBst.insert(3);
-      easyBst.insert(2);
-      easyBst.insert(6);
-      easyBst.insert(7);
+    it('should come with a depth first search function that accpets callback and order paramenetrs', () => {
+      let treeMap = {};
+      // TODO -> test function to see that left children are added before right children
+    });
+    it('should come with a breadth first search method that will run a callback on all left siblings followed by all right siblings', () => {
+      let treeMap = {};
+      let childAddedFirst = false;
 
-      console.log(easyBst);
+      // test function -> should reach each child first
+      let testBFS = function(node) {
+        console.log(node);
+        treeMap[JSON.stringify(node.value)] = true;
 
-      let log = function(val) {
-        console.log(val);
+        // check that siblings are added before children
+        if (
+          !treeMap[JSON.stringify(node.value)] &&
+          (node.left || node.right) &&
+          (treeMap[JSON.stringify(node.left.value)] || treeMap[JSON.stringify(node.right.value)])
+        ) {
+          childAddedFirst = true;
+        }
       };
 
-      // 'pre-order' means we invoke the cb on the current node, than the first left child until the leaf, than the right children
-      // console.log(easyBst.dfs(log, 'pre-order'));
+      easyBst.bfs(testBFS);
 
-      //'in-order' means we invoke the callback on the left leaf, than the root, then the right subtree
-      // console.log(easyBst.dfs(log, 'in-order'));
-
-      // 'post-order' means we invoke left leaf than go up left sub tree, then right left than traverse up right usb tree than hit root
-      console.log(easyBst.dfs(log, 'post-order'));
+      expect(childAddedFirst).to.eql(false);
     });
   });
 });
@@ -235,7 +246,6 @@ describe('es5 prototypal pattern', () => {
     });
     it('should come with an dequeue method that removes the least recently added item from the queue', () => {
       let peteQueue = new QueueES5();
-      console.log(peteQueue);
       expect(peteQueue.dequeue()).to.eql(null);
       peteQueue.enqueue(10);
       peteQueue.enqueue(20);
