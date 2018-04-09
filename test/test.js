@@ -170,7 +170,26 @@ describe('es6 class style', () => {
     });
     it('should come with a depth first search function that accpets callback and order paramenetrs', () => {
       let treeMap = {};
+      let leftChildrenAddedFirst = true;
+
       // TODO -> test function to see that left children are added before right children
+      let testDFS = function(node) {
+        // add node to treeMap
+        treeMap[JSON.stringify(node.value)] = true;
+
+        if (
+          this.left &&
+          this.right &&
+          Object.hasOwnProperty(JSON.stringify(this.right.value)) &&
+          !Object.hasOwnProperty(JSON.stringify(this.left.value))
+        ) {
+          leftChildrenAddedFirst = false;
+        }
+      };
+
+      easyBst.dfs(testDFS, 'in-order');
+
+      expect(leftChildrenAddedFirst).to.eql(true);
     });
     it('should come with a breadth first search method that will run a callback on all left siblings followed by all right siblings', () => {
       let treeMap = {};

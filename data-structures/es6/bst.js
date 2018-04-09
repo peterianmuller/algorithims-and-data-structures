@@ -69,7 +69,7 @@ class BST {
 		}
 
 		if (order === 'pre-order') {
-			cb(this.value);
+			cb(this);
 		}
 		
 		if (this.left) {
@@ -77,7 +77,7 @@ class BST {
 		}
 		
 		if (order === 'in-order') {
-			cb(this.value);
+			cb(this);
 		}
 		
 		if (this.right) {
@@ -85,7 +85,7 @@ class BST {
 		}
 
 		if(order === 'post-order') {
-			cb(this.value);
+			cb(this);
 		}
 
 	}
