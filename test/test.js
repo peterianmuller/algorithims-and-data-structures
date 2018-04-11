@@ -275,10 +275,18 @@ describe('es5 prototypal pattern', () => {
     });
   });
   describe('n-ary-tree', () => {
+    let tree = new Tree(5);
     it('should come with a constructor that has value and children properties', () => {
-      let tree = new Tree(5);
       expect(tree.value).to.eql(5);
       expect(tree.children).to.eql([]);
+    });
+    it('should come with an addChild method that adds a new tree node to children array', () => {
+      tree.addChild(0);
+      tree.addChild(1);
+      tree.addChild(2);
+      expect(tree.children[0].value).to.eql(0);
+      expect(tree.children[1].value).to.eql(1);
+      expect(tree.children[2].value).to.eql(2);
     });
   });
 });
