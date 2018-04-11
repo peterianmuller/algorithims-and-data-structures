@@ -5,6 +5,8 @@ class BST {
 		this.right = null;
 	}
 
+	// insert
+
 	// check if any nodes exist
 		// if false return null
 	// check is value is less than current node's value
@@ -34,6 +36,8 @@ class BST {
 
 	}
 
+	// contains
+
 	// check if current node exists
 	  // if false return false
 	// check if value is equal to current node's value
@@ -61,6 +65,11 @@ class BST {
 		// O -> return value of cb at each node, depending on order
 		// C
 		// E -> If tree empty return error
+
+
+		// check if tree exists
+			// if false throw new error -> tree must have at least 1 node
+		//	
 
 
 	dfs(cb, order){
@@ -115,13 +124,15 @@ class BST {
 		let queue = [this];
 		while (queue.length){
 			let currentNode = queue.shift();
-			if (currentNode.left) queue.push(currentNode.left);
-			if (currentNode.right) queue.push(currentNode.right);
+			if (currentNode.left)  {
+				queue.push(currentNode.left);
+			}	
+			if (currentNode.right) {
+				queue.push(currentNode.right);
+			}
 			cb(currentNode);
 		}
 	}
-
-
 
 
 }
