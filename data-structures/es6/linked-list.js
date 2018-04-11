@@ -1,15 +1,3 @@
-// linked list. A Linked list is a data structure that is made up of Nodes that
-// are objects with a data property and a next property. Linked Lists differ from arrays because they are collections of data that are not contiguous blocks of memory. They are non-contigous so that thier nodes can be stored all over the system without needing to reserve a set block of memory.
-
-// I will be using both a head and tail proerty so that insertion is O(1).
-
-// Time and Space complexity:
-
-// Insertion O(1)
-// Deletion O(1) - assuming you have access to node. The actual act of deletion does not require any reshuffling of other nodes in the system
-// Search O(n)
-// Access O(n)
-
 // Node constructor
 
 class Node {
@@ -27,6 +15,24 @@ class SinglyList {
     this.head = null;
     this.tail = null;
   }
+
+
+ // add
+
+  // create reference nodeToAdd to new node with passed in data
+  // check if list is empty
+    // if true
+      // set head and tail property to nodeToAdd
+      // increment length by 1
+      // return newly added node
+    // otherwise
+      // set tail's next property to nodeToAdd
+      // set tail property to nodeToAdd
+      // increment length property by 1
+      // return current tail
+
+
+
   add(data) {
     let nodeToAdd = new Node(data);
 
@@ -39,44 +45,54 @@ class SinglyList {
       return nodeToAdd;
     }
 
-    // situation 2 - adding node to non-empty list
-
-    // update current tail property's next property to point to new node
     this.tail.next = nodeToAdd;
 
-    // update tail to point to new node
     this.tail = nodeToAdd;
 
-    //update length
     this.length++;
 
     return this.tail;
   }
 
-  searchNodeAt(position) {
-    let count = 0,
-      currentNode = this.head;
+  // searchNodeAt
 
-    // check if valid position or empty list
+  // declare variable count pointing to 0 and currentNode referencing currentHead
+  // check if position parameter is greater than length or if list is empty
+    // if true return null
+  // declare while loop
+    // check if currentNode is valid
+      // if true
+        // check if count equals position
+          // if true
+            // return current node
+          // if false
+            // set current node to reference next property
+            // increment count   
+  
+
+
+  searchNodeAt(position) {
+    let count = 0, currentNode = this.head;
+
     if (position > this.length || !this.length) {
       return null;
     }
 
-    // if valid position
-    // start at head
     while (currentNode) {
-      //check if we've found node at target position
       if (count === position) {
         return currentNode;
       }
 
-      // if not keep iterating
       currentNode = currentNode.next;
 
-      //increment count
       count++;
     }
   }
+
+  // remove
+
+  // TODO: Move pseudocode outside of function 
+
 
   remove(position) {
     let count = 0,

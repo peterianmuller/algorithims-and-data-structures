@@ -5,11 +5,11 @@ function StackES5() {
   this.storage = {};
 }
 
-// add method
+// add
 
 // check if stack is empty
   // if true add value to storage and then increment size
-// return val  
+// return val
 
 StackES5.prototype.add = function(val) {
   this.storage[this.size] = val;
@@ -17,10 +17,11 @@ StackES5.prototype.add = function(val) {
   return val;
 };
 
-// remove method
+// remove
 
 // check if stack is empty
-  // if true return null
+  // if true 
+    // return null
   // if false
     // save reference to property at current size
     // remove property

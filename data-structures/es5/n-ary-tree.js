@@ -1,4 +1,3 @@
-'use strict';
 
 var Tree = function(value) {
   this.value = value;

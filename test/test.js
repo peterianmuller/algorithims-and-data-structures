@@ -56,7 +56,6 @@ describe('es6 class style', () => {
       peteList.add(new Node(3000));
       peteList.add(new Node(4000));
       peteList.add(new Node(5000));
-      //expect(peteList.remove(4).val.val).to.eql(3000);
     });
     it('should come with an add proprty that adds a node and updates the tail property', () => {
       let peteList = new SinglyList();
@@ -172,9 +171,8 @@ describe('es6 class style', () => {
       let treeMap = {};
       let leftChildrenAddedFirst = true;
 
-      // TODO -> test function to see that left children are added before right children
+      // test function to see that left children are added before right children
       let testDFS = function(node) {
-        // add node to treeMap
         treeMap[JSON.stringify(node.value)] = true;
 
         if (
@@ -195,11 +193,10 @@ describe('es6 class style', () => {
       let treeMap = {};
       let childAddedFirst = false;
 
-      // test function -> should reach each child first
+      // test function to check that siblings are added before children
       let testBFS = function(node) {
         treeMap[JSON.stringify(node.value)] = true;
 
-        // check that siblings are added before children
         if (
           !treeMap[JSON.stringify(node.value)] &&
           (node.left || node.right) &&
@@ -290,12 +287,6 @@ describe('es5 prototypal pattern', () => {
     });
     it("should come with a BFT (breadth first traversal) method that visits each node first, than all of that node's siblings before moving onto the current node's grandchildren", () => {
       // TODO
-      // let total = 0;
-      // bftChecker = node => {
-      //   total += node.value;
-      //   if (t) {
-      //   }
-      // }
     });
   });
 });

@@ -4,6 +4,8 @@ function QueueES5() {
 	this.storage = {};
 }
 
+// TODO -> add pseudocode for methods
+
 QueueES5.prototype.enqueue = function(data) {
 	if (this.oldestIndex === null) {
 		this.oldestIndex = 0;
@@ -17,12 +19,10 @@ QueueES5.prototype.enqueue = function(data) {
 };
 
 QueueES5.prototype.dequeue = function() {
-	// if empty queue return null
 	if (this.oldestIndex === null && this.newestIndex === null) {
 		return null;
 	}
-	// what if we don't delete from storage but instead move our pointers
-	var oldestItem = this.storage[this.oldestIndex];
+	let oldestItem = this.storage[this.oldestIndex];
 	this.oldestIndex++;
 	return oldestItem;
 };
