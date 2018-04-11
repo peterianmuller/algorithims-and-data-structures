@@ -1,5 +1,3 @@
-// A stack is a data structure that adds items and that can only remove the most recently added item
-
 function StackES5() {
   this.size = 0;
   this.storage = {};

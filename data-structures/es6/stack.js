@@ -1,6 +1,3 @@
-// Stacks return the most recently added data. LIFO. Stacks are liner data structures that
-// only allow us to interact with the most recently added items
-
 class Stack {
   constructor(){
     this.size = 0;

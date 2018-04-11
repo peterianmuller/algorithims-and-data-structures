@@ -1,7 +1,3 @@
-// Queue is a linear data structure that has a size, oldestIndex and newestIndex properties.
-// It also has a enqueue method that adds new values and a dequeue method that removes the
-// most distantly added properties
-
 class Queue {
 	constructor() {
 		this.oldestIndex = 0;
