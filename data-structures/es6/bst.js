@@ -69,7 +69,9 @@ class BST {
 
 		// check if tree exists
 			// if false throw new error -> tree must have at least 1 node
-		//	
+		//	check if order string is 'pre-order'
+			// if true invoke the callback on current node
+		// check if current node has a left child	
 
 
 	dfs(cb, order){

@@ -269,6 +269,7 @@ describe('es5 prototypal pattern', () => {
       peteQueue.enqueue(10);
       peteQueue.enqueue(20);
       peteQueue.enqueue(30);
+      console.log(peteQueue);
       expect(peteQueue.dequeue()).to.eql(10);
       expect(peteQueue.dequeue()).to.eql(20);
       expect(peteQueue.dequeue()).to.eql(30);
