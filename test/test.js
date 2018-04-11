@@ -288,5 +288,14 @@ describe('es5 prototypal pattern', () => {
       expect(tree.children[1].value).to.eql(1);
       expect(tree.children[2].value).to.eql(2);
     });
+    it("should come with a BFT (breadth first traversal) method that visits each node first, than all of that node's siblings before moving onto the current node's grandchildren", () => {
+      // TODO
+      // let total = 0;
+      // bftChecker = node => {
+      //   total += node.value;
+      //   if (t) {
+      //   }
+      // }
+    });
   });
 });
