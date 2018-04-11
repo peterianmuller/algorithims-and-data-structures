@@ -197,7 +197,6 @@ describe('es6 class style', () => {
 
       // test function -> should reach each child first
       let testBFS = function(node) {
-        console.log(node);
         treeMap[JSON.stringify(node.value)] = true;
 
         // check that siblings are added before children
@@ -269,11 +268,17 @@ describe('es5 prototypal pattern', () => {
       peteQueue.enqueue(10);
       peteQueue.enqueue(20);
       peteQueue.enqueue(30);
-      console.log(peteQueue);
       expect(peteQueue.dequeue()).to.eql(10);
       expect(peteQueue.dequeue()).to.eql(20);
       expect(peteQueue.dequeue()).to.eql(30);
       expect(peteQueue.dequeue()).to.eql(undefined);
+    });
+  });
+  describe('n-ary-tree', () => {
+    it('should come with a constructor that has value and children properties', () => {
+      let tree = new Tree(5);
+      expect(tree.value).to.eql(5);
+      expect(tree.children).to.eql([]);
     });
   });
 });

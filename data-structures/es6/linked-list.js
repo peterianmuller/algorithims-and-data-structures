@@ -108,7 +108,6 @@ class SinglyList {
     }
 
     while (count < position) {
-      console.log('beforeNodeToDelete is:', beforeNodeToDelete);
 
       beforeNodeToDelete = currentNode;
       nodeToDelete = currentNode.next;

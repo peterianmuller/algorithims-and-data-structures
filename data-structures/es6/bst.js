@@ -56,7 +56,6 @@ class BST {
 		} else if (this.right) {
 			return this.right.contains(value);	
 		}	
-		console.log('was not found');
 		return false;
 	}
 
