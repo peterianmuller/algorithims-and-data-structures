@@ -289,4 +289,27 @@ describe('es5 prototypal pattern', () => {
       // TODO
     });
   });
+  describe('BST', () => {
+    let bst = new BSTes5(10);
+    it('should come with a constructor that has left, right, and val properties ', () => {
+      expect(bst.left).to.eql(null);
+      expect(bst.right).to.eql(null);
+      expect(bst.val).to.eql(10);
+    });
+    it('should come with an insert method that adds left and right child following rules of BST ', () => {
+      bst.insert(5);
+      expect(bst.left.val).to.eql(5);
+      expect(bst.right).to.eql(null);
+      expect(bst.val).to.eql(10);
+      bst.insert(4);
+      expect(bst.left.left.val).to.eql(4);
+      bst.insert(11);
+      bst.insert(13);
+      bst.insert(10.5);
+      console.log(bst);
+      expect(bst.right.val).to.eql(11);
+      expect(bst.right.left.val).to.eql(10.5);
+      expect(bst.right.right.val).to.eql(13);
+    });
+  });
 });
