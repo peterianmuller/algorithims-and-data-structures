@@ -16,22 +16,19 @@ class SinglyList {
     this.tail = null;
   }
 
-
- // add
+  // add
 
   // create reference nodeToAdd to new node with passed in data
   // check if list is empty
-    // if true
-      // set head and tail property to nodeToAdd
-      // increment length by 1
-      // return newly added node
-    // otherwise
-      // set tail's next property to nodeToAdd
-      // set tail property to nodeToAdd
-      // increment length property by 1
-      // return current tail
-
-
+  // if true
+  // set head and tail property to nodeToAdd
+  // increment length by 1
+  // return newly added node
+  // otherwise
+  // set tail's next property to nodeToAdd
+  // set tail property to nodeToAdd
+  // increment length property by 1
+  // return current tail
 
   add(data) {
     let nodeToAdd = new Node(data);
@@ -58,21 +55,20 @@ class SinglyList {
 
   // declare variable count pointing to 0 and currentNode referencing currentHead
   // check if position parameter is greater than length or if list is empty
-    // if true return null
+  // if true return null
   // declare while loop
-    // check if currentNode is valid
-      // if true
-        // check if count equals position
-          // if true
-            // return current node
-          // if false
-            // set current node to reference next property
-            // increment count   
-  
-
+  // check if currentNode is valid
+  // if true
+  // check if count equals position
+  // if true
+  // return current node
+  // if false
+  // set current node to reference next property
+  // increment count
 
   searchNodeAt(position) {
-    let count = 0, currentNode = this.head;
+    let count = 0,
+      currentNode = this.head;
 
     if (position > this.length || !this.length) {
       return null;
@@ -91,8 +87,7 @@ class SinglyList {
 
   // remove
 
-  // TODO: Move pseudocode outside of function 
-
+  // TODO: Move pseudocode outside of function
 
   remove(position) {
     let count = 0,
@@ -124,15 +119,13 @@ class SinglyList {
     }
 
     while (count < position) {
-
       beforeNodeToDelete = currentNode;
       nodeToDelete = currentNode.next;
 
       count++;
     }
 
-    let nodeToRemove = currentNode.next;
-
+    const nodeToRemove = currentNode.next;
     currentNode.next = currentNode.next.next;
 
     // if we are removing tail re assign tail to node that comes before old tail
