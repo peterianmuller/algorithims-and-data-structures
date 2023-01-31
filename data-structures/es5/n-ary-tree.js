@@ -1,15 +1,14 @@
-
-var Tree = function(value) {
+var Tree = function (value) {
   this.value = value;
   this.children = [];
 };
 
-Tree.prototype.addChild = function(value) {
+Tree.prototype.addChild = function (value) {
   let node = new Tree(value);
   this.children.push(node);
 };
 
-Tree.prototype.BFS = function(cb) {
+Tree.prototype.BFS = function (cb) {
   // create queue
   let queue = [];
 
@@ -24,7 +23,7 @@ Tree.prototype.BFS = function(cb) {
   }
 };
 
-Tree.prototype.DFS = function(cb) {
+Tree.prototype.DFS = function (cb) {
   if (!this) {
     throw new Error();
   }
@@ -37,5 +36,3 @@ Tree.prototype.DFS = function(cb) {
     cb(this);
   }
 };
-
-module.exports = Tree;
